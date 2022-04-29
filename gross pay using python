@@ -1,0 +1,29 @@
+print('SALARY PROGRAM')
+name=str(input("Enter name of employee:"))
+basic=float(input("enter the basic salary"))
+da=float(basic*0.25)
+hra=float(basic*0.15)
+pf=float((basic+da)*0.12)
+ta=float(basic*0.075)
+netpay=float(basic+da+hra+ta)
+grosspay=float(netpay-pf)
+print("\n\n")
+print('SALARY BREAKUP DETAILED ')
+print('=============================')
+print('Name of employee:',name)
+print('Basic Salary:',basic)
+print('Deraness Allow:',da)
+print('house rent allow:',hra)
+print('Travel allow:',ta)
+print('net salary pay:',netpay)
+print('providenet fund',pf)
+print('=============================')
+print('GROSS PAY',grosspay)
+print('=============================')
+            
+            
+            
+            
+            
+            
+            
