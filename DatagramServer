@@ -1,0 +1,30 @@
+import java.net.*;
+import java.io.*;
+class DatagramServer
+{
+ public static DatagramSocket ds;
+ public static int clientport = 1789,serverport=1790;
+ public static void main(String a[]) throws Exception
+ {
+     byte buffer[]=new byte[80];
+     byte buffer1[] = new byte[80];
+     ds=new DatagramSocket(serverport);
+     BufferedReader dis=new BufferedReader(new InputStreamReader(System.in));
+     System.out.println("Server waiting for input");
+     InetAddress ia=InetAddress.getByName("localhost");//localhost;
+
+  while(true)
+        {
+	String s=dis.readLine();
+	if ((s==null) || (s.equals("end")))
+	   break;
+	buffer=s.getBytes();
+	ds.send(new DatagramPacket(buffer,s.length(),ia,clientport));
+        DatagramPacket p=new DatagramPacket(buffer1,buffer1.length);
+	ds.receive(p);
+	String psx = new String(p.getData(),0,p.getLength());	
+	System.out.println(psx);
+	}
+		
+ }	
+}
