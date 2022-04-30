@@ -1,0 +1,33 @@
+import java.io.*;
+import java.net.*;
+import java.lang.*;
+ public class Client
+{
+    public static void main(String args[])throws Exception
+    {
+
+         Socket csock;
+
+       BufferedReader creq;
+       PrintWriter cres;
+        
+       DataInputStream din=new DataInputStream(System.in);
+
+         System.out.println("Connecting to..."+InetAddress.getByName("localhost"));         
+         csock=new Socket("LOCALHOST",1515);
+
+        creq=new BufferedReader(new InputStreamReader(csock.getInputStream()));
+        cres=new PrintWriter(new OutputStreamWriter(csock.getOutputStream()));
+
+        String str=creq.readLine();
+        System.out.println(str);
+
+        while(!str.equals("Bye"))
+        {
+        cres.println(din.readLine());
+        cres.flush();       
+        str=creq.readLine();
+        System.out.println(str);        
+        }   
+    }
+}
