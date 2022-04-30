@@ -1,0 +1,38 @@
+import java.io.*;
+import java.net.*;
+import java.lang.*;
+public class Server
+{
+    public static void main(String args[])throws Exception
+    {
+       ServerSocket ssocket;
+       Socket sock;
+
+       BufferedReader sreq;
+       PrintWriter sres;
+       DataInputStream din=new DataInputStream(System.in);
+
+       ssocket=new ServerSocket(1515);
+       System.out.println("Listen for client connection");
+       sock=ssocket.accept();
+       System.out.println("Client connected....");
+ 
+       sreq=new BufferedReader(new InputStreamReader(sock.getInputStream()));
+       sres=new PrintWriter(new OutputStreamWriter(sock.getOutputStream()));
+ 
+        sres.println("Welcome to My Site");
+        sres.flush();     
+
+        String str=sreq.readLine();
+        System.out.println(str);
+
+        while(!str.equals("Bye"))
+        {
+        sres.println(din.readLine());
+        sres.flush();       
+        str=sreq.readLine();
+        System.out.println(str);        
+        }   
+     
+     }
+} 
