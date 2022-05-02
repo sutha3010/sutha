@@ -1,0 +1,23 @@
+input_tuple=final_tuple=()
+flag=False
+n=input('Enter the number of Employees:')
+print('enter the name,empno and salary of',n,'employee')
+for i in range(0,n):
+    name=input('Enter the name:')
+    id_no=input('Enter the employee id:')
+    bpay=input('Enter the basic pay of employee:')
+    da=float(basic*0.25)
+    hra=float(basic*0.15)
+    pf=float((basic+da)*0.12)
+    ta=float(basic*0.075)
+    gpay=float(basic+da+hra+ta)
+    netpay=float(gpay-pf)
+    input_tuple=(name,id_no,bpay,gpay,netpay,)
+    final_tuple=final_tuple+(input_tuple,)
+print("\n")
+print('emp_no\tname\tbpay\tda\t\thra\tpf\t\tnetpay')
+for x in final_tuple:
+        flag=True
+        print(x[0],"\t",x[1],"\t",x[2],"\t",x[3],"\t",x[4],"\t",x[5],"\t",x[6],"\t",x[7],"\t",x[8])
+if flag==False:
+    print("Record not found")
